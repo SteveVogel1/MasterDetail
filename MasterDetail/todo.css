@@ -52,3 +52,7 @@ form {
     grid-template-columns: max-content max-content;
     grid-gap: .3em 1em;
 }
+
+.selected {
+    background-color: cornflowerblue;
+}

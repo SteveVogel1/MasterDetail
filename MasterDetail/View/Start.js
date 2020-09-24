@@ -1,5 +1,5 @@
 import { TodoController } from '../Controller/ToDoController.js';
-import { TodoOpenView, TodoTotalView, TodoItemsView } from './Views.js'
+import { TodoOpenView, TodoTotalView, TodoItemsView, TodoDetailView } from './Views.js'
 
 const todoController = TodoController();
 
@@ -14,6 +14,8 @@ document.getElementById('plus').onclick    = _ => todoController.addTodo();
 TodoItemsView(todoController, document.getElementById('todoContainer'));
 TodoTotalView(todoController, document.getElementById('numberOfTasks'));
 TodoOpenView (todoController, document.getElementById('openTasks'));
+
+TodoDetailView(todoController, document.getElementById('detail'));
 
 // init the model
 

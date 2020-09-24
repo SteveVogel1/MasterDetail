@@ -15,6 +15,10 @@ const TodoController = () => {
         return newTodo;
     };
 
+
+    const selectedTodo = Observable();
+
+
     return {
         numberOfTodos:      todos.count,
         numberOfopenTasks:  () => todos.countIf( todo => ! todo.getDone() ),
@@ -23,6 +27,7 @@ const TodoController = () => {
         onTodoAdd:          todos.onAdd,
         onTodoRemove:       todos.onDel,
         removeTodoRemoveListener: todos.removeDeleteListener, // only for the test case, not used below
+        getSelection:       selectedTodo
     }
 
 }

@@ -1,6 +1,6 @@
 
 // View-specific parts
-export {TodoItemsView, TodoTotalView, TodoOpenView}
+export {TodoItemsView, TodoTotalView, TodoOpenView, TodoDetailView}
 
 
 const TodoItemsView = (todoController, rootElement) => {
@@ -12,7 +12,7 @@ const TodoItemsView = (todoController, rootElement) => {
             template.innerHTML = `
                 <button class="delete">&times;</button>
                 <input type="text" size="42">
-                <input type="checkbox">            
+                <input type="checkbox">
             `;
             return template.children;
         }
@@ -69,3 +69,12 @@ const TodoOpenView = (todoController, numberOfOpenTasksElement) => {
     });
     todoController.onTodoRemove(render);
 };
+
+
+const TodoDetailView = (todoController, rootElement) => {
+
+    todoController.onChangeSelection = () => {
+        console.log("Selection changed");
+    }
+
+}

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Master Detail</title>
+    <link rel="stylesheet" href="../todo.css">
+</head>
+<body>
+
+<t1>To Do's</t1>
+
+<main>
+    <div class="holder">
+        <button id="plus" autofocus onclick="todoController.addTodo();"> +</button>
+
+        <div class="table" id="todoContainer"></div>
+
+        <div>Tasks: <span id="numberOfTasks">0</span></div>
+        <div>Open: <span id="openTasks">0</span></div>
+    </div>
+</main>
+
+<main>
+    <form>
+        <label>ID</label><input type="text" disabled>
+        <label>Titel</label><input type="text" disabled>
+        <label>Beschreibung</label><input type="text" disabled>
+        <label>Datum</label><input type="date" disabled>
+        <label>Erledigt</label><input type="checkbox" disabled>
+    </form>
+</main>
+
+<script src="start.js" type="module"></script>
+
+</body>
+</html>

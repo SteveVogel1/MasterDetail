@@ -1,7 +1,9 @@
-import {TodoController} from '../Controller/ToDoController.js';
-import {TodoOpenView, TodoTotalView, TodoItemsView} from './views.js'
+import { TodoController } from '../Controller/ToDoController.js';
+import { TodoOpenView, TodoTotalView, TodoItemsView } from './Views.js'
 
 const todoController = TodoController();
+
+console.log(todoController);
 
 // binding of the main view
 

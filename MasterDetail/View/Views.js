@@ -1,3 +1,4 @@
+
 // View-specific parts
 export {TodoItemsView, TodoTotalView, TodoOpenView}
 
@@ -28,15 +29,9 @@ const TodoItemsView = (todoController, rootElement) => {
             removeMe();
         } );
 
-        inputElement.oninput = _ => todo.setText(inputElement.value);
+        inputElement.oninput = _ => todo.setTitle(inputElement.value);
 
-        todo.onTextChanged(() => inputElement.value = todo.getText());
-
-        todo.onTextValidChanged(
-            valid => valid
-                ? inputElement.classList.remove("invalid")
-                : inputElement.classList.add("invalid")
-        );
+        todo.onChangeTitle(() => inputElement.value = todo.getTitle());
 
         rootElement.appendChild(deleteButton);
         rootElement.appendChild(inputElement);

@@ -1,13 +1,13 @@
-import { ObservableList, Observable } from "../Observable/observable.js";
+import { ObservableList, Observable } from "../Observable/Observable.js";
+import { Todo } from "../Model/ToDo.js"
 
 
-
-export {TodoController}
+export { TodoController }
 
 const TodoController = () => {
 
     let id = 1;
-    const todos = Observable([]);
+    const todos = ObservableList([]);
 
     const addTodo = () => {
         const newTodo = Todo(id++);

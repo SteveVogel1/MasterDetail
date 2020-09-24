@@ -1,3 +1,9 @@
+import { Observable } from "../Observable/Observable.js";
+
+
+export { Todo }
+
+
 const Todo = (id) => {
     const idAttr          = id++;
     const titleAttr       = Observable("");

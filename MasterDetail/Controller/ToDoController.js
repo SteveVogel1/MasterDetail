@@ -16,7 +16,13 @@ const TodoController = () => {
     };
 
 
-    const selectedTodo = Observable();
+    let selectedTodo = Observable();
+
+    const setSelected = (todo) => {
+        //Unbind all
+        selectedTodo = todo;
+        //Bind all
+    }
 
 
     return {
@@ -27,7 +33,8 @@ const TodoController = () => {
         onTodoAdd:          todos.onAdd,
         onTodoRemove:       todos.onDel,
         removeTodoRemoveListener: todos.removeDeleteListener, // only for the test case, not used below
-        getSelection:       selectedTodo
+        getSelection:       selectedTodo,
+        setSelected:        (todo) => setSelected(todo)
     }
 
 }

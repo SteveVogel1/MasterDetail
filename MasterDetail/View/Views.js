@@ -20,6 +20,8 @@ const TodoItemsView = (todoController, rootElement) => {
 
         checkboxElement.onclick = _ => todo.setDone(checkboxElement.checked);
         deleteButton.onclick    = _ => todoController.removeTodo(todo);
+        inputElement.onclick = _ => todoController.setSelected(todo);
+
 
         todoController.onTodoRemove( (removedTodo, removeMe) => {
             if (removedTodo !== todo) return;
@@ -74,6 +76,14 @@ const TodoOpenView = (todoController, numberOfOpenTasksElement) => {
 const TodoDetailView = (todoController, rootElement) => {
 
     todoController.onChangeSelection = () => {
+        //Unbind old bindings
+
+
+        //bind new bindings
+
+
+        //falls keine Selektion => Disabled
+
         console.log("Selection changed");
     }
 

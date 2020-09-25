@@ -5,7 +5,7 @@ export { Todo }
 
 
 const Todo = (id) => {
-    const idAttr          = id++;
+    const idAttr          = id;
     const titleAttr       = Observable("");
     const descriptionAttr = Observable("");
     const dateAttr        = Observable("");

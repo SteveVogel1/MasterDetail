@@ -14,8 +14,9 @@ h1 {
     font-family: "Comic Sans MS", cursive, sans-serif;
     text-align: center;
 }
-.holder {
-    margin: 0 3em 0 3em;
+
+.holder2 {
+    align-content: center;
 }
 input[type=text] {
     font-family:    "Comic Sans MS", cursive, sans-serif;
@@ -30,12 +31,27 @@ input[type=text]:focus {
 #todoContainer {
     display:        grid;
     grid-column-gap: 0.5em;
-    grid-template-columns: 1.7em auto auto;
-    margin-bottom:  0.5em ;
+    grid-template-columns: 1.7em auto 3em;
+    margin-bottom:  2em ;
 }
-#plus {
+/*Buttons:*/
+#plus,#save{
+    background-color: #9acd32;
+}
+#back{
+    background-color: #dea2a2;
+}
+#plus{
+    margin: 0 0 2em 0;
+}
+#save,#back{
+    margin: 2em 1em 0 0;
+}
+#plus,#save,#back {
     position: relative;
-    top: -1em;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: medium;
 }
 .delete {
     background-color: transparent;
@@ -49,10 +65,6 @@ input.invalid {
 
 form {
     display: grid;
-    grid-template-columns: max-content max-content;
-    grid-gap: .3em 1em;
-}
-
-.selected {
-    background-color: cornflowerblue;
+    grid-template-columns: auto auto;
+    grid-gap: .5em 2em;
 }

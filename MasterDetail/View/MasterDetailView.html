@@ -7,11 +7,12 @@
 </head>
 <body>
 
-<t1>To Do's</t1>
+<h1>To Do's</h1>
 
+<!--To Do's-->
 <main>
     <div class="holder">
-        <button id="plus" autofocus onclick="todoController.addTodo();"> +</button>
+        <button id="plus" autofocus onclick="todoController.addTodo();"> + </button>
 
         <div class="table" id="todoContainer"></div>
 
@@ -20,14 +21,19 @@
     </div>
 </main>
 
+<!--Detail View-->
 <main>
-    <form id="detail">
-        <label>ID</label><input type="text" disabled>
-        <label>Titel</label><input type="text" disabled>
-        <label>Beschreibung</label><input type="text" disabled>
-        <label>Datum</label><input type="date" disabled>
-        <label>Erledigt</label><input type="checkbox" disabled>
-    </form>
+    <div class="holder2">
+        <form id="detail">
+            <label>ID</label><input type="text" disabled>
+            <label>Titel</label><input type="text" disabled>
+            <label>Beschreibung</label><input type="text" disabled>
+            <label>Datum</label><input type="date" disabled>
+            <label>Erledigt</label><input type="checkbox" disabled id="checkbox">
+        </form>
+        <button id="back">zurück</button>
+        <button id="save">speichern</button>
+    </div>
 </main>
 
 <script src="Start.js" type="module"></script>

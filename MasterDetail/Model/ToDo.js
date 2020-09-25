@@ -1,33 +1,32 @@
-import { Observable } from "../Observable/Observable.js";
-
+import {Attribute} from "./PresentationModel.js";
 
 export { Todo }
 
 
 const Todo = (id) => {
-    const idAttr          = id++;
-    const titleAttr       = Observable("");
-    const descriptionAttr = Observable("");
-    const dateAttr        = Observable("");
-    const doneAttr        = Observable(false);
+    const idAttr          = id;
+    const titleAttr       = Attribute("");
+    const descriptionAttr = Attribute("");
+    const dateAttr        = Attribute("");
+    const doneAttr        = Attribute(false);
 
     return {
-        getTitle:         titleAttr.getValue,
-        setTitle:         titleAttr.setValue,
-        onChangeTitle:    titleAttr.onChange,
+        getTitle:               titleAttr.valueObs.getValue,
+        setTitle:               titleAttr.valueObs.setValue,
+        onChangeTitle:          titleAttr.valueObs.onChange,
 
-        getDescription:         descriptionAttr.getValue,
-        setDescription:         descriptionAttr.setValue,
-        onChangeDescription:    descriptionAttr.onChange,
+        getDescription:         descriptionAttr.valueObs.getValue,
+        setDescription:         descriptionAttr.valueObs.setValue,
+        onChangeDescription:    descriptionAttr.valueObs.onChange,
 
-        getDate:         dateAttr.getValue,
-        setDate:         dateAttr.setValue,
-        onChangeDate:    dateAttr.onChange,
+        getDate:                dateAttr.valueObs.getValue,
+        setDate:                dateAttr.valueObs.setValue,
+        onChangeDate:           dateAttr.valueObs.onChange,
 
-        getDone:         doneAttr.getValue,
-        setDone:         doneAttr.setValue,
-        onChangeDone:    doneAttr.onChange,
+        getDone:                doneAttr.valueObs.getValue,
+        setDone:                doneAttr.valueObs.setValue,
+        onChangeDone:           doneAttr.valueObs.onChange,
 
-        getId:           id
+        getId:                  idAttr
     }
 };

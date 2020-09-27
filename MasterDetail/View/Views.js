@@ -11,7 +11,7 @@ const TodoItemsView = (todoController, rootElement) => {
             const template = document.createElement('DIV'); // only for parsing
             template.innerHTML = `
                 <button class="delete">&times;</button>
-                <input type="text" size="42" >
+                <label type="text" size="42" ></label>
                 <input type="checkbox">
             `;
             return template.children;
@@ -20,12 +20,13 @@ const TodoItemsView = (todoController, rootElement) => {
 
         checkboxElement.onclick = _ => todo.setDone(checkboxElement.checked);
         deleteButton.onclick    = _ => todoController.removeTodo(todo);
+
         inputElement.onclick = _ => todoController.setSelection(todo);
+        inputElement.innerText = todo.getTitle();
 
 
         todoController.onTodoRemove( (removedTodo, removeMe) => {
             if (removedTodo !== todo) return;
-
             if(removedTodo === todoController.getSelection.getValue()){
                 todoController.setSelection(undefined);
             }
@@ -36,13 +37,9 @@ const TodoItemsView = (todoController, rootElement) => {
             removeMe();
         });
 
-        inputElement.oninput = _ => {
-            console.log("Set title on master");
-            todo.setTitle(inputElement.value);
-        }
 
-        todo.onChangeDone( val => {
-            console.log("Done value changed", val);
+        todo.onChangeTitle( () => {
+            console.log("Changing title");
         });
 
         rootElement.appendChild(deleteButton);
@@ -94,20 +91,17 @@ const TodoDetailView = (todoController) => {
         const titleElement = document.getElementById("detailTitle");
         const descriptionElement = document.getElementById("detailDescription");
         const dateElement = document.getElementById("detailDate");
-        const doneElement = document.getElementById("detailDone");
 
         if(typeof todo === 'undefined' ){
             //Disabling inputs
             titleElement.disabled = true;
             descriptionElement.disabled = true;
             dateElement.disabled = true;
-            doneElement.disabled = true;
 
             idElement.innerHTML = "";
             titleElement.value = "";
             descriptionElement.value = "";
             dateElement.value = "";
-            doneElement.checked = "";
         }else{
 
             console.log("new selected todo", todo);
@@ -124,7 +118,6 @@ const TodoDetailView = (todoController) => {
             titleElement.value = todo.getTitle();
             descriptionElement.value = todo.getDescription();
             dateElement.value = todo.getDate();
-            doneElement.checked = todo.getDone();
 
 
             //Unbind old bindings
@@ -147,11 +140,9 @@ const TodoDetailView = (todoController) => {
                 todo.setDate(dateElement.value);
             }
 
-            doneElement.onclick = _ => todo.setDone(doneElement.checked);
-
-
             //Change events
-            todo.onChangeTitle( () => {
+            console.log("Set on change listeners");
+            todo.onChangeTitle( (val) => {
                console.log("blabla title");
             });
 
@@ -163,26 +154,45 @@ const TodoDetailView = (todoController) => {
                console.log("Blabla date")
             });
 
-            todo.onChangeDone( () => {
-                console.log("blabla done");
-            });
 
             //Is Dirty
-            console.log(todo.getTitleIsDirty);
             todo.getTitleIsDirty.onChange( (val) => {
                 if(val){
-                    console.log("Got dirty");
                     titleElement.classList.add("isDirty");
                 }else{
-                    console.log("Clean again");
                     titleElement.classList.remove("isDirty");
                 }
-            })
+            });
+
+            todo.getDescriptionIsDirty.onChange( (val) => {
+                if(val){
+                    descriptionElement.classList.add("isDirty");
+                }else{
+                    descriptionElement.classList.remove("isDirty");
+                }
+            });
+
+            todo.getDateIsDirty.onChange( (val) => {
+                if(val){
+                    dateElement.classList.add("isDirty");
+                }else{
+                    dateElement.classList.remove("isDirty");
+                }
+            });
 
 
         }
 
 
+    };
+
+    document.getElementById("save").onclick = () => {
+        console.log(todoController.getSelection.getValue());
+        todoController.getSelection.getValue().save();
+    };
+
+    document.getElementById("back").onclick= () => {
+        todoController.getSelection.getValue().undo();
     };
 
     todoController.getSelection.onChange( todo => {

@@ -5,6 +5,8 @@ const Observable = value => {
     return {
         onChange: callback => {
             listeners.push(callback);
+            console.log("Added Lister", value, callback);
+            console.log("All listeners now", listeners);
             callback(value, value);
         },
         getValue: ()       => value,
@@ -12,8 +14,8 @@ const Observable = value => {
             if (value === newValue) return;
             const oldValue = value;
             value = newValue;
-            console.log("Change on value", value);
-            console.log("Listeners", listeners);
+            //console.log("Change on value", value);
+            //console.log("Listeners", listeners);
             listeners.forEach(callback => callback(value, oldValue));
         }
     }

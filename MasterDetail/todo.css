@@ -68,3 +68,7 @@ form {
     grid-template-columns: auto auto;
     grid-gap: .5em 2em;
 }
+
+input.isDirty{
+    background-color: orange;
+}

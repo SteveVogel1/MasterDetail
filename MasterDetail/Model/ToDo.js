@@ -5,10 +5,24 @@ export { Todo }
 
 const Todo = (id) => {
     const idAttr          = id;
-    const titleAttr       = Attribute("");
+    const titleAttr       = Attribute("New Todo");
     const descriptionAttr = Attribute("");
     const dateAttr        = Attribute("");
     const doneAttr        = Attribute(false);
+
+    const save = () => {
+        titleAttr.saveValue();
+        descriptionAttr.saveValue();
+        dateAttr.saveValue();
+        doneAttr.saveValue();
+    };
+
+    const undo = () => {
+        titleAttr.undoValue();
+        descriptionAttr.undoValue();
+        dateAttr.undoValue();
+        doneAttr.undoValue();
+    }
 
     return {
         getTitle:               titleAttr.valueObs.getValue,
@@ -31,6 +45,9 @@ const Todo = (id) => {
         onChangeDone:           doneAttr.valueObs.onChange,
         getDoneIsDirty:         doneAttr.isDirtyObs,
 
-        getId:                  idAttr
+        getId:                  idAttr,
+
+        save:                   save,
+        undo:                   undo
     }
 };

@@ -17,10 +17,12 @@ const Attribute = value => {
 
     const saveValue = () => {
         oldValue = valueObs.getValue();
+        isDirtyObs.setValue(false);
     }
 
     const undoValue = () => {
         valueObs.setValue(oldValue);
+        isDirtyObs.setValue(false);
     }
 
     return { valueObs, isDirtyObs, saveValue, undoValue }

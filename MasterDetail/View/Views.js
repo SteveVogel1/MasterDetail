@@ -37,7 +37,7 @@ const TodoItemsView = (todoController, rootElement) => {
             removeMe();
         });
 
-
+        // TODO: Wird nicht gemacht
         todo.onChangeTitle( () => {
             console.log("Changing title");
         });
@@ -70,6 +70,7 @@ const TodoTotalView = (todoController, numberOfTasksElement) => {
 
 const TodoOpenView = (todoController, numberOfOpenTasksElement) => {
 
+    // TODO: Doesn't update anymore
     const render = () =>
         numberOfOpenTasksElement.innerText = "" + todoController.numberOfopenTasks();
 
@@ -102,6 +103,11 @@ const TodoDetailView = (todoController) => {
             titleElement.value = "";
             descriptionElement.value = "";
             dateElement.value = "";
+
+            titleElement.classList.remove("isDirty");
+            descriptionElement.classList.remove("isDirty");
+            dateElement.classList.remove("isDirty");
+
         }else{
 
             console.log("new selected todo", todo);
@@ -110,7 +116,6 @@ const TodoDetailView = (todoController) => {
             titleElement.disabled = false;
             descriptionElement.disabled = false;
             dateElement.disabled = false;
-            doneElement.disabled = false;
 
 
             //Setting values

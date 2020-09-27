@@ -11,7 +11,7 @@ const TodoItemsView = (todoController, rootElement) => {
             const template = document.createElement('DIV'); // only for parsing
             template.innerHTML = `
                 <button class="delete">&times;</button>
-                <label type="text" size="42" ></label>
+                <label type="text" size="42"></label>
                 <input type="checkbox">
             `;
             return template.children;
@@ -24,6 +24,16 @@ const TodoItemsView = (todoController, rootElement) => {
                 todo.save();
             }
         }
+
+        todoController.getSelection.onChange( selTodo => {
+            if(selTodo === todo){
+                inputElement.classList.add("selectedTodo");
+            }else{
+                inputElement.classList.remove("selectedTodo");
+            }
+
+        });
+
         deleteButton.onclick    = _ => todoController.removeTodo(todo);
 
         inputElement.onclick = _ => todoController.setSelection(todo);
@@ -92,7 +102,6 @@ const TodoTotalView = (todoController, numberOfTasksElement) => {
 
 const TodoOpenView = (todoController, numberOfOpenTasksElement) => {
 
-    // TODO: Doesn't update anymore
     const render = () =>
         numberOfOpenTasksElement.innerText = "" + todoController.numberOfopenTasks();
 

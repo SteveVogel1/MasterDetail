@@ -24,10 +24,16 @@ input[type=text] {
     color:          darkblue;
     border-width:   0 0 1px 0;
 }
-input[type=text]:focus {
-    border-color:   orange;
-    outline:        transparent none 0;
+.selectedTodo {
+    outline-style:  solid;
+    outline-width:  2px;
+    outline-color: dimgray;
 }
+
+input.isDirty, label.isDirty{
+    background-color: #f1e9d2;
+}
+
 #todoContainer {
     display:        grid;
     grid-column-gap: 0.5em;
@@ -67,8 +73,4 @@ form {
     display: grid;
     grid-template-columns: auto auto;
     grid-gap: .5em 2em;
-}
-
-input.isDirty, label.isDirty{
-    background-color: orange;
 }

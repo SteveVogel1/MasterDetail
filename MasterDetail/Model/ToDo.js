@@ -1,4 +1,4 @@
-import {Attribute} from "./PresentationModel.js";
+import {Attribute} from "./Attribute.js";
 
 export { Todo }
 

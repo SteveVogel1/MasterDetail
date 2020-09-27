@@ -8,16 +8,13 @@ const TodoController = () => {
 
     let id = 1;
     const todos = ObservableList([]);
+    const selectedTodo = Observable();
 
     const addTodo = () => {
         const newTodo = Todo(id++);
         todos.add(newTodo);
         return newTodo;
     };
-
-
-    let selectedTodo = Observable();
-
 
     return {
         numberOfTodos:      todos.count,
@@ -28,7 +25,7 @@ const TodoController = () => {
         onTodoRemove:       todos.onDel,
         removeTodoRemoveListener: todos.removeDeleteListener, // only for the test case, not used below
         getSelection:       selectedTodo,
-        setSelection:        (todo) => selectedTodo.setValue(todo)
+        setSelection:       (todo) => selectedTodo.setValue(todo)
     }
 
 }

@@ -4,7 +4,6 @@ const Observable = value => {
     const listeners = [];
     return {
         onChange: callback => {
-            console.log("Added Lister", value, callback);
             listeners.push(callback);
             callback(value, value);
         },

@@ -69,6 +69,6 @@ form {
     grid-gap: .5em 2em;
 }
 
-input.isDirty{
+input.isDirty, label.isDirty{
     background-color: orange;
 }

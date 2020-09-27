@@ -18,7 +18,12 @@ const TodoItemsView = (todoController, rootElement) => {
         }
         const [deleteButton, inputElement, checkboxElement] = createElements();
 
-        checkboxElement.onclick = _ => todo.setDone(checkboxElement.checked);
+        checkboxElement.onclick = _ => {
+            todo.setDone(checkboxElement.checked);
+            if(checkboxElement.checked) {
+                todo.save();
+            }
+        }
         deleteButton.onclick    = _ => todoController.removeTodo(todo);
 
         inputElement.onclick = _ => todoController.setSelection(todo);
@@ -37,20 +42,25 @@ const TodoItemsView = (todoController, rootElement) => {
             removeMe();
         });
 
+        const todoCheckDirty = () => {
+            if(todo.getTitleIsDirty.getValue() || todo.getDescriptionIsDirty.getValue() || todo.getDateIsDirty.getValue()){
+                inputElement.classList.add("isDirty");
+            }else{
+                inputElement.classList.remove("isDirty");
+            }
+        }
+
         todo.getTitleIsDirty.onChange( (val) => {
-            console.log("Happy happy", val);
+            todoCheckDirty();
         });
         todo.getDescriptionIsDirty.onChange( (val) => {
-
+            todoCheckDirty();
         });
         todo.getDateIsDirty.onChange( (val) => {
-
+            todoCheckDirty();
         });
 
-        // TODO: Wird nicht gemacht
-        console.log(todo.onChangeTitle);
         todo.onChangeTitle( (val) => {
-            console.log("Changing title");
             inputElement.innerText = todo.getTitle();
         });
 
@@ -134,11 +144,18 @@ const TodoDetailView = (todoController) => {
             dateElement.value = todo.getDate();
 
 
-            //Unbind old bindings
+            //Binding
+            todo.onChangeTitle( () => {
+                titleElement.value = todo.getTitle();
+            });
 
+            todo.onChangeDescription( () => {
+                descriptionElement.value = todo.getDescription();
+            });
 
-            //bind new bindings
-
+            todo.onChangeDate( () => {
+                dateElement.value = todo.getDate();
+            });
 
             //Input events
             titleElement.oninput = _ => {
@@ -177,15 +194,10 @@ const TodoDetailView = (todoController) => {
                     dateElement.classList.remove("isDirty");
                 }
             });
-
-
         }
-
-
     };
 
     document.getElementById("save").onclick = () => {
-        console.log(todoController.getSelection.getValue());
         todoController.getSelection.getValue().save();
     };
 

@@ -11,10 +11,8 @@ const Attribute = value => {
     let oldValue = value;
 
     valueObs.onChange(val => {
-        console.log("onChange in attribute", val);
        isDirtyObs.setValue(val !== oldValue)
     });
-
 
     const saveValue = () => {
         oldValue = valueObs.getValue();

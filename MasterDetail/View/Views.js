@@ -37,9 +37,21 @@ const TodoItemsView = (todoController, rootElement) => {
             removeMe();
         });
 
+        todo.getTitleIsDirty.onChange( (val) => {
+            console.log("Happy happy", val);
+        });
+        todo.getDescriptionIsDirty.onChange( (val) => {
+
+        });
+        todo.getDateIsDirty.onChange( (val) => {
+
+        });
+
         // TODO: Wird nicht gemacht
-        todo.onChangeTitle( () => {
+        console.log(todo.onChangeTitle);
+        todo.onChangeTitle( (val) => {
             console.log("Changing title");
+            inputElement.innerText = todo.getTitle();
         });
 
         rootElement.appendChild(deleteButton);
@@ -110,13 +122,10 @@ const TodoDetailView = (todoController) => {
 
         }else{
 
-            console.log("new selected todo", todo);
-
             //Enabling inputs
             titleElement.disabled = false;
             descriptionElement.disabled = false;
             dateElement.disabled = false;
-
 
             //Setting values
             idElement.innerHTML = todo.getId;
@@ -133,7 +142,6 @@ const TodoDetailView = (todoController) => {
 
             //Input events
             titleElement.oninput = _ => {
-                console.log("On Input details")
                 todo.setTitle(titleElement.value);
             }
 
@@ -144,21 +152,6 @@ const TodoDetailView = (todoController) => {
             dateElement.oninput = _ => {
                 todo.setDate(dateElement.value);
             }
-
-            //Change events
-            console.log("Set on change listeners");
-            todo.onChangeTitle( (val) => {
-               console.log("blabla title");
-            });
-
-            todo.onChangeDescription( () => {
-                console.log("blabla description");
-            });
-
-            todo.onChangeDate( () => {
-               console.log("Blabla date")
-            });
-
 
             //Is Dirty
             todo.getTitleIsDirty.onChange( (val) => {

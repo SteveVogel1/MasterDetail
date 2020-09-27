@@ -8,11 +8,12 @@ const Attribute = value => {
     const valueObs = Observable(value);
     const isDirtyObs = Observable(false);
 
-    let oldValue = "";
+    let oldValue = value;
 
-    valueObs.onChange = (val) => {
-        isDirtyObs.setValue(val !== oldValue)
-    }
+    valueObs.onChange(val => {
+        console.log("onChange in attribute", val);
+       isDirtyObs.setValue(val !== oldValue)
+    });
 
 
     const saveValue = () => {

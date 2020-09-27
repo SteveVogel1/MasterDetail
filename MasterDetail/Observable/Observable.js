@@ -12,6 +12,8 @@ const Observable = value => {
             if (value === newValue) return;
             const oldValue = value;
             value = newValue;
+            console.log("Change on value", value);
+            console.log("Listeners", listeners);
             listeners.forEach(callback => callback(value, oldValue));
         }
     }

@@ -3,8 +3,6 @@ import { TodoOpenView, TodoTotalView, TodoItemsView, TodoDetailView } from './Vi
 
 const todoController = TodoController();
 
-console.log(todoController);
-
 // binding of the main view
 
 document.getElementById('plus').onclick    = _ => todoController.addTodo();
@@ -15,7 +13,7 @@ TodoItemsView(todoController, document.getElementById('todoContainer'));
 TodoTotalView(todoController, document.getElementById('numberOfTasks'));
 TodoOpenView (todoController, document.getElementById('openTasks'));
 
-TodoDetailView(todoController, document.getElementById('detail'));
+TodoDetailView(todoController);
 
 // init the model
 

@@ -14,18 +14,22 @@ const Todo = (id) => {
         getTitle:               titleAttr.valueObs.getValue,
         setTitle:               titleAttr.valueObs.setValue,
         onChangeTitle:          titleAttr.valueObs.onChange,
+        getTitleIsDirty:        titleAttr.isDirtyObs,
 
         getDescription:         descriptionAttr.valueObs.getValue,
         setDescription:         descriptionAttr.valueObs.setValue,
         onChangeDescription:    descriptionAttr.valueObs.onChange,
+        getDescriptionIsDirty:  descriptionAttr.isDirtyObs,
 
         getDate:                dateAttr.valueObs.getValue,
         setDate:                dateAttr.valueObs.setValue,
         onChangeDate:           dateAttr.valueObs.onChange,
+        getDateIsDirty:         dateAttr.isDirtyObs,
 
         getDone:                doneAttr.valueObs.getValue,
         setDone:                doneAttr.valueObs.setValue,
         onChangeDone:           doneAttr.valueObs.onChange,
+        getDoneIsDirty:         doneAttr.isDirtyObs,
 
         getId:                  idAttr
     }
